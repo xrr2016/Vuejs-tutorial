@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="wapper">
+  <div>
     <router-link
       v-if="$route.path !== '/time-entries/log-time'"
       to="/time-entries/log-time"
@@ -14,10 +14,6 @@
     <hr class="divider">
 
     <router-view></router-view>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8">
-
     <div class="time-entries">
       <p v-if="!plans.length"><strong>还没有任何计划</strong></p>
       <ul class="list-group">
@@ -38,18 +34,15 @@
                  {{plan.totalTime}} 小时
               </h3>
             </div>
-            <div class="col-sm-7 col-md-7 comment-section">
-              <p>{{plan.comment}}</p>
+            <div class="col-sm-7 comment-section">
+              <p class="plan-comment">{{plan.comment}}</p>
+              <button type="button" class="btn  btn-danger delete-button pull-right"
+              @click="deletePlan(index)"
+              >删除计划</button>
             </div>
-            <button type="button" class="btn  btn-danger delete-button pull-right"
-            @click="deletePlan(index)"
-            >删除计划</button>
           </div>
         </li>
       </ul>
-      </div>
-    </div>
-    </div>
   </div>
   </div>
 </template>
@@ -72,7 +65,7 @@ export default {
 </script>
 
 <style lang="css">
-.wapper{
+.list-group-itme{
   background-color: #f4f4f4;
 }
 .avatar{
@@ -91,5 +84,8 @@ export default {
 }
 .comment-section{
   padding: 20px;
+}
+.plan-comment{
+  font-size: 20px;
 }
 </style>
