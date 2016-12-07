@@ -16,7 +16,7 @@
         <input type="text" class="form-control" v-model="comment" placeholder="Comment">
       </div>
     </div>
-    <button type="button" class="btn btn-primary" @click="save">保存</button>
+    <button type="button" class="btn btn-primary" @click="save()">保存</button>
     <router-link to="/time-entries" class="btn btn-danger">取消</router-link>
     <hr>
   </div>
@@ -39,7 +39,7 @@ export default {
         image:'https://sfault-avatar.b0.upaiyun.com/247/437/2474377559-57ecb0ecc1038_huge256',
         date:this.date,
         totalTime:this.totalTime,
-        comment:this.component
+        comment:this.comment
       }
       this.$store.dispatch('savePlan',plan)
       this.$store.dispatch('addTotalTime',this.totalTime)

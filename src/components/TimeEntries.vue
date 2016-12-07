@@ -1,21 +1,27 @@
 <template lang="html">
-  <div class="">
+  <div class="wapper">
     <router-link
       v-if="$route.path !== '/time-entries/log-time'"
       to="/time-entries/log-time"
-      class="btn btn-primary"
-    >创建</router-link>
+      class="btn btn-primary ">
+      创建一个计划
+    </router-link>
 
-    <div class="" v-if="$route.path === '/time-entries/log-time'">
-      <h3>创建</h3>
+    <div  v-if="$route.path === '/time-entries/log-time'">
+      <h3>创建一个计划</h3>
     </div>
-    <hr>
-    <router-view><router-view>
+
+    <hr class="divider">
+
+    <router-view></router-view>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
 
     <div class="time-entries">
-      <p v-if="!plans.length">还没有任何计划</p>
-      <div class="list-group">
-        <a class="list-group-itme" v-for="(plan,index) of palns">
+      <p v-if="!plans.length"><strong>还没有任何计划</strong></p>
+      <ul class="list-group">
+        <li class="list-group-itme" v-for="(plan,index) of plans">
           <div class="row">
             <div class="col-sm-2 user-details">
               <img :src="plan.avatar" class="avatar img-circle img-responsive">
@@ -23,29 +29,28 @@
                 <strong>{{plan.name}}</strong>
               </p>
             </div>
-
             <div class="col-sm-2 text-center time-block">
-              <h3 class="list-group-item-text total-time">
-                <i class="glyphicon glyphicon-time"></i>
-                {{plan.tatalTime}}
-              </h3>
               <p class="label label-primary text-center">
                 <i class="glyphicon glyphicon-calendar"></i>
                 {{ plan.date }}
               </p>
-              <div class="col-sm-7 comment-section">
-                <p>{{plan.comment}}</p>
-              </div>
-              <div class="col-sm-1">
-                <button type="button" class="btn btn-xs btn-danger delete-button"
-                  @click="deletePlan(index)"
-                >X</button>
-              </div>
+              <h3 class="list-group-item-text total-time">
+                 {{plan.totalTime}} 小时
+              </h3>
             </div>
+            <div class="col-sm-7 col-md-7 comment-section">
+              <p>{{plan.comment}}</p>
+            </div>
+            <button type="button" class="btn  btn-danger delete-button pull-right"
+            @click="deletePlan(index)"
+            >删除计划</button>
           </div>
-        </a>
+        </li>
+      </ul>
       </div>
     </div>
+    </div>
+  </div>
   </div>
 </template>
 
@@ -63,15 +68,13 @@ export default {
       this.$store.dispatch('deletePlan',idx)
     }
   }
-  data(){
-    return{
-
-    }
-  }
 }
 </script>
 
 <style lang="css">
+.wapper{
+  background-color: #f4f4f4;
+}
 .avatar{
   height: 75px;
   margin: 0 auto;

@@ -29,9 +29,10 @@ const routes = [
   {
     path:'/time-entries',
     component: TimeEntries,
-    chidren:[
+    children:[{
       path:'log-time',
       component:LogTime
+      }
     ]
   },
   {

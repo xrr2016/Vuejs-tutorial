@@ -7,7 +7,7 @@ export default {
   decTotalTime({commit},time){
     commit(types.DEC_TOTAL_TIME,time)
   },
-  savePlan({commit},paln){
+  savePlan({commit},plan){
     commit(types.SAVE_PLAN,plan)
   },
   deletePlan({commit},plan){
