@@ -1,17 +1,37 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
+  <div class="" id="wapper">
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <a href="#" class="navbar-brand">
+            <i class="glyphicon glyphicon-time"></i>
+            <strong>计划板</strong>
+        </a>
+        <ul class="nav navbar-nav">
+          <li><router-link to="/home">首页</router-link></li>
+          <li><router-link to="/time-entries">计划列表</router-link></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <sidebar></sidebar>
+        </div>
+        <div class="col-sm-9">
+          <router-view><router-view>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
-
 <script>
-import Hello from './components/Hello'
+import Sidebar from './components/Sidebar'
 
 export default {
   name: 'app',
   components: {
-    Hello
+    Sidebar
   }
 }
 </script>
